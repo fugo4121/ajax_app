@@ -1,16 +1,14 @@
 class PostsController < ApplicationController
 
   def index
-    @post = Post.find(1)
-    @posts = Post.all
+    @posts = Post.all.order(id: "DESC")
   end
 
-  def new
-
-  end
 
   def create
     Post.create(content: params[:content])
+    # 新規投稿後、index画面にリダイレクト(create→ルーティング→index)
+    redirect_to action: :index
   end
 
 end
