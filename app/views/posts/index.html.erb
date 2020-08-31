@@ -6,7 +6,8 @@
 <% end %>
 
 <% @posts.each do |post| %>
-  <div class="post">
+  <%# それぞれのメモ要素に、memoのidと既読情報を付与 %>
+  <div class="post" data-id=<%= post.id %> data-check=<%= post.checked %>>
     <div class="post-date">
       投稿日時：<%= post.created_at %>
     </div>
@@ -14,4 +15,5 @@
       <%= post.content %>
     </div>
   </div>
+</div>
 <% end %>
