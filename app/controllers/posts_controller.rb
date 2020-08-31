@@ -6,9 +6,8 @@ class PostsController < ApplicationController
 
 
   def create
-    Post.create(content: params[:content])
-    # 新規投稿後、index画面にリダイレクト(create→ルーティング→index)
-    redirect_to action: :index
+    post = Post.create(content: params[:content], checked: false)
+    render json:{ post: post }
   end
 
   def checked
