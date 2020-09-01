@@ -6,6 +6,8 @@ class PostsController < ApplicationController
 
 
   def create
+    # メモ欄より入力されたデータをルーティングを通してパラメータで受け取り
+    # 受け取ったパラメータを変数に代入し、json形式でjsに返す(httpメソッド：postで指定したmemo.js)
     post = Post.create(content: params[:content], checked: false)
     render json:{ post: post }
   end
