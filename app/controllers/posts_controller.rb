@@ -6,9 +6,10 @@ class PostsController < ApplicationController
 
 
   def create
-    Post.create(content: params[:content])
-    # 新規投稿後、index画面にリダイレクト(create→ルーティング→index)
-    redirect_to action: :index
+    # メモ欄より入力されたデータをルーティングを通してパラメータで受け取り
+    # 受け取ったパラメータを変数に代入し、json形式でjsに返す(httpメソッド：postで指定したmemo.js)
+    post = Post.create(content: params[:content], checked: false)
+    render json:{ post: post }
   end
 
   def checked
